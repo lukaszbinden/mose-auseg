@@ -34,7 +34,7 @@ class MSMRIDataset(Dataset):
 
     def _prep_label(self, label):
         label = label[:, :, 0]
-        label = label.astype(int)
+        label = label.astype(np.uint8)
         assert all([cl > 240 or cl < 20 for cl in np.unique(label)]), f"{np.unique(label)}"
         label[label < 20] = 0
         label[label > 240] = 1
