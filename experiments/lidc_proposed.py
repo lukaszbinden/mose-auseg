@@ -7,10 +7,10 @@ from models.MoSE import MoSE
 experiment_name = 'MoSE_run'
 
 # Setup directories
-log_root = './log'
+log_root = './logs'
 run_root = './runs'
 log_dir_name = 'lidc'
-data_folder = '../data/lidc_npy/'
+data_folder = 'data/lidc_npy/'
 
 # Setup data
 data_loader = lidc_Dataloader
