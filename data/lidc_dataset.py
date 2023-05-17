@@ -44,7 +44,7 @@ class lidc_Dataset(Dataset):
         if self.label_range != 'all':
             y = y[:,:,self.label_range]
         # change y from H,W,N to N,H,W
-        y = y.transpose(2,0,1)
+        # y = y.transpose(2,0,1)
         # Do normalization and add first channel to x
         x = np.expand_dims((x-x.mean())/x.std(),0).astype(np.float32)
 

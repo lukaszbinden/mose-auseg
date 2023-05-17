@@ -144,8 +144,13 @@ def save_npy(data, vis_dir):
         for t in types:
             if not os.path.exists(os.path.join(vis_dir, s, t)):
                 os.makedirs(os.path.join(vis_dir, s, t))
+            cnt = 0
             for index, image in enumerate(data[s][t]):
-                np.save(os.path.join(vis_dir, s, t, str(index) + '.npy'), image)
+                fl = os.path.join(vis_dir, s, t, str(index) + '.npy')
+                if cnt % 100 == 0:
+                    print(cnt, ":", fl)
+                np.save(fl, image)
+                cnt += 1
 
     return
 
@@ -186,9 +191,12 @@ def vis(data, vis_dir):
     return
 
 if __name__ == '__main__':
-    data_root = '../data/data_lidc.pickle'
-    preproc_folder = '../data/preproc'
-    npy_dir = '../data/lidc_npy'
+    # data_root = '../data/data_lidc.pickle'
+    # preproc_folder = '../data/preproc'
+    # npy_dir = '../data/lidc_npy'
+    data_root = '/storage/homefs/lz20w714/aimi_storage/lars/data_lidc.pickle'
+    preproc_folder = '/storage/homefs/lz20w714/aimi_storage/lars'
+    npy_dir = 'data/lidc_npy'
 
     save_npy(load_and_maybe_process_data(data_root, preproc_folder), npy_dir)
 
