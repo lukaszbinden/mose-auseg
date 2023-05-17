@@ -9,14 +9,14 @@ experiment_name = 'MoSE_run'
 # Setup directories
 log_root = './log'
 run_root = './runs'
-log_dir_name = 'lidc'
-data_folder = '../data/lidc_npy/'
+log_dir_name = 'ms_mri'
+data_folder = '../data/ms_mri/'
 
 # Setup data
 data_loader = lidc_Dataloader
 n_classes = 2
-input_channels = 1
-image_size = (128, 128)
+input_channels = 4
+image_size = (64, 64)
 num_w = 16
 label_range = 'all'
 eval_class_ids = [1]
