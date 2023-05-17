@@ -1,10 +1,10 @@
-from data.lidc_dataset import lidc_Dataloader
+from data.msmri_dataset import msmri_Dataloader
 from utils.OTloss import OT_loss
 import data.transformations as transformations
 import torchvision.transforms as transforms
 from models.MoSE import MoSE
 
-experiment_name = 'MoSE_run'
+experiment_name = 'MoSE_run_msmri'
 
 # Setup directories
 log_root = './log'
@@ -13,11 +13,11 @@ log_dir_name = 'ms_mri'
 data_folder = '../data/ms_mri/'
 
 # Setup data
-data_loader = lidc_Dataloader
+data_loader = msmri_Dataloader
 n_classes = 2
 input_channels = 4
 image_size = (64, 64)
-num_w = 16
+num_w = 4  # num workers
 label_range = 'all'
 eval_class_ids = [1]
 
@@ -42,7 +42,7 @@ net = MoSE(input_channels=input_channels,
                 gating_input_layer = 4,
                 latent_dim = 1,
                 num_expert = 4,
-                sample_per_mode=4,
+                sample_per_mode=1,
                 loss_fn = loss_fn,
                 masked_pred = False,
                 eval_class_ids = eval_class_ids,

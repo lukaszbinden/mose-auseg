@@ -38,7 +38,7 @@ class MSMRIDataset(Dataset):
         assert all([cl > 240 or cl < 20 for cl in np.unique(label)]), f"{np.unique(label)}"
         label[label < 20] = 0
         label[label > 240] = 1
-        # cf. ms_mri.py: transform + to_tensor
+        # cf. ms_mri_proposed.py: transform + to_tensor
         return label[:, :, None].transpose((2, 0, 1))
 
     def __getitem__(self, x):

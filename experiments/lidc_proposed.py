@@ -17,7 +17,7 @@ data_loader = lidc_Dataloader
 n_classes = 2
 input_channels = 1
 image_size = (128, 128)
-num_w = 16
+num_w = 4  # num workers
 label_range = 'all'
 eval_class_ids = [1]
 
